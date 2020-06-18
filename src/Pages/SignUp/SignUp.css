@@ -25,7 +25,7 @@
   
   .bgImage {
       /* The image used */
-      background-image: url("C:\Users\anura\OneDrive\Desktop\NewNetflix\Netflix-Clone\src\Assets\bgImage.jpg");
+      background-image: url(../../Assets/bgImage.jpg);
     
       
     
