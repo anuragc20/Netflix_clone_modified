@@ -1,0 +1,54 @@
+.SignUp-form{
+    background-color:rgba(158, 182, 174, 0.466);
+   
+    margin:40px 200px;
+    width: 400px;
+    margin-left:500px;
+    height:500px;
+   z-index: 100;
+  padding-top: 50px;
+
+}
+.Control-Width{
+   width:80%;
+   margin-left: 10%;
+    
+      
+  }
+  .Control-Width-btn{
+      /* margin:20px 20px;
+      width: 360px;
+       */
+       width: 80%;
+    margin-left: 10%;
+  }
+  
+  .bgImage {
+      /* The image used */
+      background-image: url("C:\Users\anura\OneDrive\Desktop\NewNetflix\Netflix-Clone\src\Assets\bgImage.jpg");
+    
+      
+    
+    background-attachment: fixed;
+     /* background-size: cover; */
+      background-position: center;
+      background-repeat: no-repeat;
+       background-size: cover; 
+      min-height: 100%;
+      min-width: 1024px;
+      filter: brightness(65%);
+      width: 100%;
+      height: auto;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    .Text-Color{
+       color: white;
+    }
+    .Field-width{
+      width: 100%;
+    }
+    .SignUp-text{
+        margin-left: 39px;
+    }
