@@ -21,7 +21,7 @@ const CollectionGridItem = ({ item, listItems, addItem }) => {
         <h1 className="grid-item__title">{title}</h1>
         <h1 className="grid-item__title">{name}</h1>
         <span className="grid-item__overview">{overview}</span>
-        <AddToList item={item} />
+        {/* <AddToList item={item} /> */}
       </div>
     </div>
   );

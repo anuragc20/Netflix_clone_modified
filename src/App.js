@@ -123,7 +123,7 @@ class App extends React.Component {
           <Route exact path="/movies" component={Movies} />
           <Route path="/tvshows/:name" component={TVShowItemPage} />
           <Route path="/tvshows" component={TvShow} />
-          <Route exact path="/userdetails" render={()=><DisplayUserDetails/>} />
+          <Route exact path="/userdetails" component={DisplayUserDetails} />
            <Route
              exact
              path="/signin"

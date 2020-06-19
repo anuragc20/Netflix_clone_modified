@@ -128,24 +128,13 @@ import { Button, Form, FormGroup, Label, Input} from 'reactstrap'
 
 const SignUp = props => {
   const { handleSubmit, pristine, reset, submitting } = props
-  const onSubmit = async(formValues) => {
+  const onSubmit = (formValues) => {
+    console.log(formValues)
     const {name,email, password,confirmpassword } = formValues;
-    console.log("Hi i am in onSubmit   " + name, email, password, confirmpassword)
-    if (password !== confirmpassword) {
-      alert("Passwords dont match");
-      return;
-    }
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-         email, password
-      )
-
-      await CreateUserProfileDocument(user, { name })
-
-      
-    } catch (error) {
-      console.error(error);
-    }
+    if (formValues && Object.keys(formValues).length !== 0)
+    {
+      window.alert(JSON.stringify(formValues))
+      }
   }
   return (
     <div className="bgImage" >

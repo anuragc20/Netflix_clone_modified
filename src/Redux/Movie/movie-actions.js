@@ -66,7 +66,7 @@ export function getMovies() {
   return dispatch => {
     fetchData().then(data => {
       const movieData = data.map(({ results }) => results);
-      var newArray = Array.prototype.concat(... movieData);
+      var newArray = Array.prototype.concat(...movieData);
       // console.log(data);
       // console.log(newArray);
       dispatch({

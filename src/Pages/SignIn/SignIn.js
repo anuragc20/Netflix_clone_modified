@@ -137,42 +137,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import compose from "compose-function";
 import GoogleLogin from 'react-google-login'
-// import DisplayUserDetails from '../../Components/NewComponent/DisplayUserDetails'
 
-// const FormPage = () => {
-//   const { handleSubmit, pristine, reset, submitting } = props
-//   return (
-//     <div  className="bgImage">
-//       <div/>
-//       <Form className="login-form text-center" onSubmit={handleSubmit}>
-//       <h3 className="Text-Color">Sign In</h3>
-//       <FormGroup className="Control-Width">
-//           <Field type="email" placeholder="EMAIL" name="email" Component='input'/>
-        
-
-//       </FormGroup>
-//       <FormGroup className="Control-Width">
-//           <Field type="password" placeholder="Password" component='input' />
-        
-
-//       </FormGroup>
-//       <Button color="success" className="Control-Width-btn"type="button" disabled={pristine || submitting} onClick={reset}>Submit</Button>
-//         <GoogleLoginButton className="Google-btn" />
-//         <span>New to Netflix ? </span>
-//         <Link to="/signup">
-//               Sign up now.
-//             </Link>
-     
-//       </Form>
-      
-//       </div>
-//   );
-// }
-  
-  
-//   export default reduxForm({
-//        form: 'simple' // a unique identifier for this form
-//      })(FormPage)
 
 
 const SimpleForm = props => {
@@ -180,59 +145,53 @@ const SimpleForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   console.log(props)
   
-  //  const onSubmit =  async(formValues) => {
-  //     console.log(formValues)
-  //    const { email, password } = formValues;
-  //    console.log("Hi i am in handle password   "+email,password)
-  //    try {
-  //          await auth.signInWithEmailAndPassword(email, password);
-         
-  //        } catch (error) {
-  //        console.error(error);
-  //    }
-    
-  // }
+  
+
   const onSubmit =  (formValues) => {
-    //  console.log(formValues)
-    const { email, password } = formValues;
-    // console.log("Hi i am in handle password   " + email, password)
-    const user = {
-      email: email,
-      password: password
-    };
-    //console.log(user)
+    if (formValues && Object.keys(formValues).length !== 0)
+      {
+        const { email, password } = formValues;
     
-        axios.post(`http://argos-dev-api.azurewebsites.net/api/v1/login`,user)
-        .then(res => {
-          // console.log(res);
-          // console.log(res.data.data.token)
-          const user = JSON.stringify(res.data.data.user)
-          const token = res.data.data.token
-          // const token = res.config.token
-          // console.log("UserData:" + user)
-          // console.log("Token:" + token)
-          const myStorage = localStorage
+        const user = {
+          email: email,
+          password: password
+        };
+        //console.log(user)
+        
+            axios.post(`http://argos-dev-api.azurewebsites.net/api/v1/login`,user)
+            .then(res => {
+              // console.log(res);
+              // console.log(res.data.data.token)
+              const user = JSON.stringify(res.data.data.user)
+              const token = res.data.data.token
+              // const token = res.config.token
+              // console.log("UserData:" + user)
+              // console.log("Token:" + token)
+              const myStorage = localStorage
+              
+              myStorage.setItem("User", user)
+              myStorage.setItem("Token", token)
+              const getUserFromLocalStorage =  myStorage.getItem("User")
+              const getTokenFromLocalStorage = myStorage.getItem("Token")
+              // console.log("Getting UserData From LocalStorage:"+getUserFromLocalStorage)
+              // console.log("Getting Token From LocalStorage:"+getTokenFromLocalStorage)
+              console.log(res.isSuccess)
+             
+             
+              setTimeout(() => {
+                if (localStorage.getItem("User")) {
+                  props.history.push("/movies");
+                  window.location.reload() }
+                  }, 1000);
+               
+              
+            })
+          .catch(err => console.log(err))
+        
           
-          myStorage.setItem("User", user)
-          myStorage.setItem("Token", token)
-          const getUserFromLocalStorage =  myStorage.getItem("User")
-          const getTokenFromLocalStorage = myStorage.getItem("Token")
-          // console.log("Getting UserData From LocalStorage:"+getUserFromLocalStorage)
-          // console.log("Getting Token From LocalStorage:"+getTokenFromLocalStorage)
-          console.log(res.isSuccess)
-         
-         
-          setTimeout(() => {
-            if (localStorage.getItem("User")) {
-              props.history.push("/movies");
-              window.location.reload() }
-              }, 1000);
-           
-          
-        })
-      .catch(err => console.log(err))
-    
       
+      }
+    
     
   }
   const responseGoogle = (response) => {

@@ -101,12 +101,13 @@ import './Header.css'
 import { Form, FormControl } from 'react-bootstrap';
 import { Link ,Redirect} from "react-router-dom";
 import DisplayUserDetails from '../NewComponent/DisplayUserDetails';
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
-
-
-function Header() {
+function Header(props) {
   const SignOut = () => {
     localStorage.clear();
+    props.history.push("/movies");
     window.location.reload();
     // setTimeout(() => {
     //   if (localStorage.getItem("User")) {
@@ -122,7 +123,7 @@ function Header() {
     <header>
 
       <nav className="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar">
-        <a className="navbar-brand" href="#"><strong>  <img src={Logo} alt="logo" className="header__logo" /> </strong></a>
+        <a className="navbar-brand" href="#"><strong> <Link to ="/movies"> <img src={Logo} alt="logo" className="header__logo" /> </Link></strong></a>
 
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -130,7 +131,7 @@ function Header() {
 
             <li className="p-3">  <Link to="/movies"> Movies</Link></li>
             <li className="p-3">  <Link to="/tvshows"> Tv Shows</Link></li>
-            <li className="p-3">  <Link to="/mylist"> My List</Link></li>
+            {/* <li className="p-3">  <Link to="/mylist"> My List</Link></li> */}
           </ul>
           <ul className="Header-right mr-3" >
             <li>
@@ -155,4 +156,5 @@ function Header() {
   )
 }
 
-export default Header
+export default withRouter(connect()(Header));
+ 
