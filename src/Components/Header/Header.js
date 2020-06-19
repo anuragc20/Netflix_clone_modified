@@ -103,8 +103,9 @@ import { Link ,Redirect} from "react-router-dom";
 import DisplayUserDetails from '../NewComponent/DisplayUserDetails';
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import SearchBar from "../SearchBar/SearchBar";
 
-function Header(props) {
+function Header(props,{history,currentUser,currentRoute,hidden,ToggleMenuHidden}) {
   const SignOut = () => {
     localStorage.clear();
     props.history.push("/movies");
@@ -136,7 +137,9 @@ function Header(props) {
           <ul className="Header-right mr-3" >
             <li>
               <Form inline>
-                <FormControl type="text" placeholder="Movies,TvShows...." className="mr-sm-2" />
+                {/* <FormControl type="text" placeholder="Movies,TvShows...." className="mr-sm-2" currentRoute={currentRoute} /> */}
+                <SearchBar currentRoute={currentRoute} />
+             
                 {/* <Button variant="outline-success">Search</Button> */}
                
               </Form>

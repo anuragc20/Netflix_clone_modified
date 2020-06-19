@@ -35,13 +35,13 @@ const urls = [
 
 export function fetchData() {
   return Promise.all(
-    urls.map(items => {
-      return axios.get(items).then(response => response.data);
+    urls.map(async(items) => {
+      return await axios.get(items).then(response => response.data);
     })
   );
 }
 
-export const fetchAdditionalTVData = id => {
+export const fetchAdditionalTVData = async(id )=> {
   const url = `${API_URL}tv/${id}?api_key=${API_KEY}&append_to_response=videos,credits&language=en-US`;
-  return axios.get(url).then(response => response.json());
+  return await axios.get(url).then(response => response.data);
 };

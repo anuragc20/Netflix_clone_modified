@@ -37,7 +37,7 @@ export const fetchData = () => {
   );
 };
 
-export const fetchAdditionalMovieData = id => {
+export const fetchAdditionalMovieData = async(id) => {
   const url = `${API_URL}movie/${id}?api_key=${API_KEY}&append_to_response=videos,credits&language=en-US`;
-  return axios.get(url).then(response => response.json());//.json() not created any problem with axios.get()
+  return await axios.get(url).then(response => response.data);//.json() not created any problem with axios.get()
 };

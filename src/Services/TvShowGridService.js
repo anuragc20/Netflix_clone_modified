@@ -25,8 +25,8 @@ const urls = [
 
 export function fetchTvShowsGrid() {
   return Promise.all(
-    urls.map(items => {
-      return axios.get(items).then(response => response.data);
+    urls.map(async(items) => {
+      return await axios.get(items).then(response => response.data);
     })
   );
 }

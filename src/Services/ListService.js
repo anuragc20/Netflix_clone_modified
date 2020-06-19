@@ -17,9 +17,9 @@
 import { API_URL, API_KEY } from "../Config/config";
 import axios from 'axios';
 
-export const fetchListData = id => {
+export const fetchListData = async(id) => {
   const url = `${API_URL}movie/${id}?api_key=${API_KEY}&language=en-US`;
-  return axios.get(url).then(response => response.json());
+  return await axios.get(url).then(response => response.data);
 };
 
 
